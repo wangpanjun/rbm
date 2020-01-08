@@ -1,0 +1,55 @@
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-title pr">
+            <h4>服务</h4>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table student-data-table m-t-20">
+                    <tbody>
+                    <tr>
+                        <td>服务器版本</td>
+                        <td>
+                            {{ info['redis_version'] }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>宿主操作系统</td>
+                        <td>
+                            {{ info['os'] }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>架构（32 或 64 位）</td>
+                        <td>
+                            {{ info['arch_bits'] }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>事件处理机制</td>
+                        <td>
+                            {{ info['multiplexing_api'] }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>进程 PID</td>
+                        <td>
+                            {{ info['process_id'] }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>随机标识符</td>
+                        <td>{{ info['run_id'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>TCP/IP 监听端口</td>
+                        <td>{{ info['tcp_port'] }}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

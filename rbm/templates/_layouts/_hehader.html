@@ -1,0 +1,149 @@
+<style type="text/css">
+    .dbs {
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        background: #eceaea;
+        float: left;
+        margin: 8px
+    }
+
+    .dbs:hover {
+        background: #cddef4;
+    }
+
+    .dbselect {
+        background: #cddef4;
+    }
+
+    .settings li:hover {
+        background: #cddef4;
+    }
+
+    .settingselect {
+        background: #cddef4;
+    }
+    .dbCount{
+        font-size: 8px;
+        float: right;
+        margin-right: 4px;
+        margin-top: -38px;
+        color: gray;
+    }
+</style>
+<div class="header" style="position: fixed; left: 0; right: 0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="float-left">
+                    <div>
+                        <a href="/" class="btn btn-sm btn-info" style="margin-top: 13px">主页</a>
+                    </div>
+                    {#                    <div class="hamburger sidebar-toggle1">#}
+                    {#                        <span>主页</span>#}
+                    {#                        <span class="line"></span>#}
+                    {#                        <span class="line"></span>#}
+                    {#                    </div>#}
+                </div>
+                <div class="float-right">
+                    <div class="dropdown dib">
+                        <div class="header-icon" data-toggle="dropdown">
+                            <i class="ti-layout-grid2"></i>
+                            <div class="drop-down dropdown-menu dropdown-menu-right" style="width: 266px">
+                                <div class="dropdown-content-heading">
+                                    <span class="text-left">数据库</span>
+                                </div>
+                                <div class="dropdown-content-body" style="float: left;">
+                                    {% for item in dbs %}
+                                        <div id="db{{ item['db'] }}Id" class="dbs {% if select_db==item['db'] %}dbselect{% endif %}"
+                                             onclick="changeDb({{ item['db'] }})">
+                                            <input value="{{ item['db'] }}" hidden>
+                                            <div style="text-align: center; margin-top: 16px">
+                                                {{ item['db'] }}
+                                            </div>
+                                            <div class="dbCount">
+                                                {{ item['keys'] }}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    <div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown dib">
+                        <div class="header-icon" data-toggle="dropdown">
+                            <i class="ti-rss-alt"></i>
+                            <div class="drop-down dropdown-menu dropdown-menu-right">
+                                <div class="dropdown-content-heading">
+                                    <span class="text-left">{{ settings_count }} 配置信息</span>
+                                    <a href="##" onclick="requestSettings()">
+                                        <i class="ti-pencil-alt pull-right"></i>
+                                    </a>
+                                </div>
+                                <div class="dropdown-content-body">
+                                    <ul class="settings">
+                                        {% for item in show_st %}
+                                            <li id="changeSetting{{ item.id }}Id" class="{% if item.is_select %}settingselect {% endif %}">
+                                                <input value="{{ item.id }}" hidden>
+                                                <a href="#" onclick="changeSetting({{ item.id }})">
+                                                    <div class="notification-content">
+                                                        <div class="notification-heading">{{ item.name }}</div>
+                                                        <div class="notification-text">{{ item.host }}:{{ item.port }}</div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                        <li class="text-center">
+                                            <a href="#" class="more-link" onclick="requestSettings()">更多</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function requestSettings() {
+        window.location.href = 'settings';
+    }
+
+    function change() {
+        const stId = $(".settingselect input").val();
+        const dbId = $(".dbselect input").val();
+        $.ajax({
+            'url': '/db',
+            'type': 'post',
+            'data': JSON.stringify({
+                'stId': stId,
+                'dbId': dbId
+            }),
+            'success': function (data) {
+                window.location.href = '/'
+            },
+            'error': function (error) {
+
+            }
+        })
+    }
+
+    function changeDb(value) {
+        $(".dbs").removeClass("dbselect");
+        const curId = "#db" + value + 'Id';
+        $(curId).addClass('dbselect');
+        change();
+    }
+
+    function changeSetting(value) {
+        $(".settings li").removeClass("settingselect");
+        const changeSettingId = "#changeSetting" + value + 'Id';
+        $(changeSettingId).addClass("settingselect");
+        change();
+    }
+</script>

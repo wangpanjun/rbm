@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Redis 可视化管理</title>
+    <!-- Styles -->
+    <link href="/static/css/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/css/lib/themify-icons.css" rel="stylesheet">
+    <link href="/static/css/lib/owl.carousel.min.css" rel="stylesheet"/>
+    <link href="/static/css/lib/owl.theme.default.min.css" rel="stylesheet"/>
+    <link href="/static/css/lib/menubar/sidebar.css" rel="stylesheet">
+    <link href="/static/css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/lib/helper.css" rel="stylesheet">
+    <link href="/static/css/style.css?a=1" rel="stylesheet">
+    <link href="/static/css/jquery.jsonview.css" rel="stylesheet">
+
+    <script src="/static/js/lib/jquery.min.js"></script>
+    <script src="/static/js/jquery.jsonview.js"></script>
+    <script src="/static/js/lib/form-validation/jquery.validate.min.js"></script>
+
+</head>
+
+<body>
+
+
+{% block nav %} {% endblock %}
+{% include "_layouts/_hehader.html" %}
+<div class="content-wrap" id="mainId" style="padding-top: 72px">
+    {% block content %}{% endblock %}
+</div>
+
+
+<script src="/static/js/lib/bootstrap.min.js"></script>
+</body>
+
+</html>
+

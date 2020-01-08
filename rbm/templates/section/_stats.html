@@ -1,0 +1,85 @@
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-title pr">
+            <h4>统计信息</h4>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table student-data-table m-t-20">
+                    <tbody>
+                    <tr>
+                        <td>新创建连接个数</td>
+                        <td>{{ info['total_connections_received'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>redis处理的命令数</td>
+                        <td>{{ info['total_commands_processed'] }}</td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>redis当前的 QPS</td>
+                        <td>{{ info['instantaneous_ops_per_sec'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>redis网络入口流量字节数</td>
+                        <td>{{ info['total_net_input_bytes'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>redis网络出口流量字节数</td>
+                        <td>{{ info['total_net_output_bytes'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>拒绝的连接个数</td>
+                        <td>{{ info['rejected_connections'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>主从完全同步成功次数</td>
+                        <td>{{ info['sync_full'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>主从部分同步成功次数</td>
+                        <td>{{ info['sync_partial_ok'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>主从部分同步失败次数</td>
+                        <td>{{ info['sync_partial_err'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>运行以来过期的key的数量</td>
+                        <td>{{ info['expired_keys'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>运行以来剔除(超过了MaxMemory后)的key的数量</td>
+                        <td>{{ info['evicted_keys'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>命中次数</td>
+                        <td>{{ info['keyspace_hits'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>没命中次数</td>
+                        <td>{{ info['keyspace_misses'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>主动碎片整理命中次数</td>
+                        <td>{{ info['active_defrag_hits'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>主动碎片整理未命中次数</td>
+                        <td>{{ info['active_defrag_misses'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>主动碎片整理key命中次数</td>
+                        <td>{{ info['active_defrag_key_hits'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>主动碎片整理key未命中次数</td>
+                        <td>{{ info['active_defrag_key_misses'] }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

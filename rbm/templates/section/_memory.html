@@ -1,0 +1,52 @@
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-title pr">
+            <h4>内存</h4>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table student-data-table m-t-20">
+                    <tbody>
+                    <tr>
+                        <td>Redis 分配器分配的内存总量</td>
+                        <td>
+                            {{ info['used_memory_human'] }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>操作系统分配的内存总量</td>
+                        <td>
+                            {{ info['used_memory_rss_human'] }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>内存消耗峰值</td>
+                        <td>
+                            {{ info['used_memory_peak_human'] }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>操作系统内存</td>
+                        <td>
+                            {{ info['total_system_memory_human'] }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>淘汰策略</td>
+                        <td>{{ info['maxmemory_policy'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Defrag任务</td>
+                        <td>{{ info['active_defrag_running'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>延迟释放的挂起对象</td>
+                        <td>{{ info['lazyfree_pending_objects'] }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+    <div class="nano">
+
+        <div class="nano-content">
+            <div class="logo"><a href="##"><!-- <img src="/static/images/logo.png" alt="" /> --><span>Config</span></a></div>
+            <ul id="keyId">
+                <li id="keynewId" class="{% if data == {} %} active {% endif %}"><a
+                        onclick="request('new')">添加新配置</a></li>
+                <div style="background: grey; height: 3px !important;">&nbsp;</div>
+                {% for item in content %}
+                    <li class="{% if item.id|string == cur %}active{% endif %}" id="key{{ item.id }}Id"><a
+                            onclick="request({{ item.id }})">{{ item.name }}
+
+                        {% if item.is_select %}
+                            <span class="ti-control-record float-right" style="margin-top:8px"></span>
+                        {% endif %}
+                    </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /# sidebar -->
+
+
+<script type=" text/javascript">
+    function request(i) {
+        const curId = "#key" + i + 'Id';
+        $("#keyId li").removeClass("active");
+        $(curId).addClass("active");
+        $.ajax({
+            'url': '/settings/' + i,
+            'type': 'get',
+            'success': function (data) {
+                $("#mainId").html(data);
+            },
+            'error': function (error) {
+            }
+        })
+    }
+</script>
