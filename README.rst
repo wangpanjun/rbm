@@ -19,6 +19,7 @@ git clone https://github.com/wangpanjun/rbm.git
 ```
 pip install -r requirements.txt
 ```
+
 3.运行
 
 ```
