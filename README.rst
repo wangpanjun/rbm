@@ -8,6 +8,7 @@
 
 
 ## 本地运行
+
 1.克隆代码
 
 ```
@@ -23,9 +24,6 @@ pip install -r requirements.txt
 ```
 python run.py
 ```
-
-
-
 
 ## docker 运行
 
