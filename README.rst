@@ -34,6 +34,7 @@ python run.py
 ```
 docker pull wangpanjun/rbm:latest
 ```
+
 2 运行容器
 
 ```
