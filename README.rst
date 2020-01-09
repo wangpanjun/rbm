@@ -42,11 +42,6 @@ docker run -d -p 0.0.0.0:5000:5000 wangpanjun/rbm:latest
 
 ## 使用建议
 本地环境运行使用虚拟沙盒
-
-```
-virtualenv rbm -p python3
-
-source rbm/bin/activate
-
-python run.py
-```
+ - virtualenv rbm -p python3
+ - source rbm/bin/activate
+ - python run.py
